@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"/>
+  <title>🎨 GeoMagic 🧠 Art Machine</title>
+  <meta name="author" content="GeoMagic Team"/>
+  <meta name="description" content="Transform images into geometric abstract art using shapes and creativity."/>
+  <meta name="keywords" content="geometrize, geometric, art, shapes, abstract, image transformation, creative, primitives"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="icon" type="image/x-icon" href="icon/favicon.png"/>
+  <link rel="apple-touch-icon" href="icon/apple-touch-icon-precomposed.png"/>
+  <link href="css/style.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/nouislider.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/nouislider.pips.css" rel="stylesheet" type="text/css"/>
+  <style>
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081, 0 0 30px #ff4081;
+      }
+      to {
+        text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff80ab, 0 0 40px #ff80ab;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="header">
+    <div class="inner">
+      <h1 style="font-size: 3em; color: #e91e63; animation: glow 2s ease-in-out infinite alternate;">🎨 GeoMagic 🧠 Art Machine</h1>
+      <h2>✨ Turn your images into stunning abstract art with intelligent shapes!</h2>
+      <img src="assets/images/geometrize_logo.png" class="logo" alt="GeoMagic Logo" id="geometrizehaxelogo"/>
+      <p>🎯 An open-source image geometrizer powered by creativity and code. Based on <code>primitive</code> by Michael Fogleman.</p>
+    </div>
+  </section>
+
+  <section id="accordion">
+    <div>
+      <input id="check-1" type="checkbox"/>
+      <h2><label for="check-1">⚙️ Settings</label></h2>
+      <div class="settings">
+        <div class="sliders stitched">
+          <div class="container">
+            <h3>🎛️ Shape Opacity</h3>
+            <div class="black" id="shapeopacity"></div>
+          </div>
+          <div class="container">
+            <h3>🌄 Background Opacity</h3>
+            <div class="orange" id="initialbackgroundopacity"></div>
+          </div>
+          <div class="container">
+            <h3>🎲 Random Shapes</h3>
+            <div class="red" id="randomshapesperstep"></div>
+          </div>
+          <div class="container">
+            <h3>🔁 Mutations</h3>
+            <div class="green" id="shapemutationsperstep"></div>
+          </div>
+        </div>
+
+        <div class="textboxes stitched">
+          <div class="container"> <h3>▭ Rectangles</h3> <input class="control" id="rectangles" type="checkbox"/> </div>
+          <div class="container"> <h3>↻ Rotated Rectangles</h3> <input class="control" id="rotatedrectangles" type="checkbox"/> </div>
+          <div class="container"> <h3>🔺 Triangles</h3> <input class="control" id="triangles" type="checkbox"/> </div>
+          <div class="container"> <h3>🥚 Ellipses</h3> <input class="control" id="ellipses" type="checkbox"/> </div>
+          <div class="container"> <h3>↻ Rotated Ellipses</h3> <input class="control" id="rotatedellipses" type="checkbox"/> </div>
+          <div class="container"> <h3>⚪ Circles</h3> <input class="control" id="circles" type="checkbox"/> </div>
+          <div class="container"> <h3>➖ Lines</h3> <input class="control" id="lines" type="checkbox"/> </div>
+          <div class="container"> <h3>🌀 Bezier Curves</h3> <input class="control" id="quadraticbeziers" type="checkbox"/> </div>
+        </div>
+
+        <div class="textboxes stitched">
+          <div class="container"> <h3>➕ Shapes Added</h3> <h3 id="shapesaddedtext">0</h3> </div>
+          <div class="container"> <h3>🚧 Max Shapes Limit</h3> <input class="control" id="maxshapescaptextedit" min="20" step="1" type="number"/> </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container stitched" id="currentsvgcontainer"></div>
+
+  <div class="container stitched">
+    <div id="controls">
+      <a class="button" id="runpausebutton"><h2>🟢 Run</h2></a>
+      <a class="button" id="stepbutton"><h2>⏭️ Step</h2></a>
+      <input type="file" id="openimageinput" accept="image/*" style="display:none;"/>
+      <input type="button" class="button" id="openimagebutton" value="📂 Open Image" onclick="document.getElementById('openimageinput').click();"/>
+      <a class="button" id="randomimagebutton"><h2>🎲 Random Image</h2></a>
+      <a class="button" id="resetbutton"><h2>🔄 Reset</h2></a>
+    </div>
+  </div>
+
+  <div class="container stitched">
+    <div id="saveoptions">
+      <a class="button" id="saveimagebutton"><h2>💾 Save Image</h2></a>
+      <a class="button" id="savesvgbutton"><h2>📐 Save SVG</h2></a>
+      <a class="button" id="savejsonbutton"><h2>📄 Save JSON</h2></a>
+    </div>
+  </div>
+
+  <div class="container stitched">
+    <h2>🚀 How It Works</h2>
+    <p>🧠 GeoMagic turns your uploaded images into abstract art by evolving colorful shapes over time.</p>
+    <p>🎨 Watch triangles, ellipses, and curves blend into expressive visuals — like origami for pixels!</p>
+    <p>▶️ Click <strong>Run</strong> to begin. Save your creation as PNG, SVG, or JSON when you're ready.</p>
+    <p>📚 Explore documentation or join our creative community for tips and inspiration!</p>
+  </div>
+
+  <div id="sampleimages">
+    <img src="assets/images/demo_images/cat_example.jpg" id="defaultimage" alt="Default demo image"/>
+  </div>
+
+  <script src="js/wNumb.min.js" type="text/javascript"></script>
+  <script src="js/nouislider.min.js" type="text/javascript"></script>
+  <script src="js/geometrize.js" type="text/javascript"></script>
+</body>
+</html>
